@@ -11,9 +11,10 @@ module Api
       end
 
       def sort_stations
-        @lat = params["lat"]
-        @lng = params["lng"]
-        byebug
+        lat = params["lat"]
+        lng = params["lng"]
+        coords = [lat, lng].map(&:to_f)
+        render json: Station.near(coords, 2)
       end
     end
   end
