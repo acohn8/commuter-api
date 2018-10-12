@@ -9,6 +9,12 @@ module Api
       def index
         render json: Station.all
       end
+
+      def sort_stations
+        @lat = params["lat"]
+        @lng = params["lng"]
+        byebug
+      end
     end
   end
 end
