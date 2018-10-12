@@ -7,7 +7,7 @@ module Api
       end
 
       def index
-        render json: Station.first
+        render json: Station.all
       end
     end
   end
