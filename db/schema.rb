@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_12_155923) do
+ActiveRecord::Schema.define(version: 2018_10_16_132640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "forecasts", force: :cascade do |t|
+    t.float "lat"
+    t.string "lng"
+    t.string "float"
+  end
 
   create_table "station_codes", force: :cascade do |t|
     t.string "station_code"
