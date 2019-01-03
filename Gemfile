@@ -31,7 +31,7 @@ gem 'rack-cors'
 gem 'active_model_serializers'
 gem 'graphql'
 gem 'geocoder', '~> 1.3', '>= 1.3.7'
-gem 'graphiql-rails', '1.4.4', group: :development
+gem 'graphiql-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
