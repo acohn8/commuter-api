@@ -1,6 +1,6 @@
 module Types
   class QueryType < Types::BaseObject
-    description "The query root of this schema"
+    description 'The query root of this schema'
     field :stations, [Types::StationType], null: false
 
     def stations
@@ -19,9 +19,8 @@ module Types
       StationCode.all
     end
 
-
     field :station, StationType, null: true do
-      description "Find a station by ID"
+      description 'Find a station by ID'
       argument :id, ID, required: true
     end
 
@@ -31,7 +30,7 @@ module Types
     end
 
     field :closest_stations, [Types::StationType], null: true do
-      description "find the closest stations to a pair of coordinates"
+      description 'find the closest stations to a pair of coordinates'
       argument :lat, Float, required: true
       argument :lng, Float, required: true
     end
@@ -41,9 +40,8 @@ module Types
       Station.near(coords, 2).includes(:lines)
     end
 
-
     field :line, LineType, null: true do
-      description "Find a line by ID"
+      description 'Find a line by ID'
       argument :id, ID, required: true
     end
 
