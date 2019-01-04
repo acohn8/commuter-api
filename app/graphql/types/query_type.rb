@@ -26,8 +26,21 @@ module Types
     end
 
     def station(id:)
-      Station.find(id)
+      station = Station.find(id)
+      station
     end
+
+    field :closest_stations, [Types::StationType], null: true do
+      description "find the closest stations to a pair of coordinates"
+      argument :lat, Float, required: true
+      argument :lng, Float, required: true
+    end
+
+    def closest_stations(lat:, lng:)
+      coords = [lat, lng]
+      Station.near(coords, 2).includes(:lines)
+    end
+
 
     field :line, LineType, null: true do
       description "Find a line by ID"
