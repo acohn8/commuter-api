@@ -4,13 +4,13 @@ module Types
     field :stations, [Types::StationType], null: false
 
     def stations
-      Station.all
+      Station.all.includes(:lines, :station_codes)
     end
 
     field :lines, [Types::LineType], null: false
 
     def lines
-      Line.all
+      Line.all.includes(:stations)
     end
 
     field :station_codes, [Types::StationCodeType], null: false
