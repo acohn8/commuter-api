@@ -1,5 +1,7 @@
 class Station < ApplicationRecord
   has_many :station_codes
+  has_many :station_lines
+  has_many :lines, through: :station_lines
   geocoded_by :address, latitude: :lat, longitude: :lng
 
   def fetch_station_info

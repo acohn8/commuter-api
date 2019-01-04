@@ -1,12 +1,12 @@
-Types::StationType = GraphQL::ObjectType.define do
-
-  name 'Station'
+class Types::StationType < Types::BaseObject
+  description "A station"
 
   # it has the following fields
-  field :id, !types.ID
-  field :name, !types.String
-  field :address, !types.String
-  field :lat, !types.Float
-  field :lng, !types.Float
-  field :station_codes, types[Types::StationcodeType]
+  field :id, ID, null: false
+  field :name, String, null: false
+  field :address, String, null: false
+  field :lat, Float, null: false
+  field :lng, Float, null: false
+  field :lines, [Types::LineType], null: false
+  field :station_codes, [Types::StationCodeType], null: false
 end
