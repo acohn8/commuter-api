@@ -48,5 +48,17 @@ module Types
     def line(id:)
       Line.find(id)
     end
+
+    field :weather, WeatherType, null: true do
+      description 'Get weather and Metro info around a point'
+      argument :lat, Float, required: true
+      argument :lng, Float, required: true
+    end
+
+    def weather(lat:, lng:)
+      url = "https://api.darksky.net/forecast/1114b767335760c2ae618d019fe72dd0/#{lat},#{lng}"
+      weather_response = HTTParty.get(url)
+      JSON.parse(weather_response.body)
+    end
   end
 end
